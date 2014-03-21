@@ -4,12 +4,11 @@ Spriter Example
 Example for Spriter Haxe Engine : 
 https://github.com/loudoweb/SpriterHaxeEngine
 
-
-Install it:
+**Install it:**
 
 ``haxelib install SpriterHaxeEngine``
 
-Configure it:
+**Configure it:**
 
 ```as3
 //set the root canvas where to add all the animations
@@ -35,4 +34,8 @@ engine.getEntity(0).applyCharacterMap('gun', true);
 //update on enter frame
 engine.update();
 ```
+
+**Demo Assets**
+
+There are some demo assets in this library. There were made with Spriter b7. So it may not be compatible with SpriterHaxeEngine (currently b6.1 support)
  

@@ -5,8 +5,10 @@ import flash.display.BitmapData;
 import flash.display.PixelSnapping;
 import flash.display.Sprite;
 import flash.events.Event;
+import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.Lib;
+import flash.ui.Keyboard;
 import openfl.Assets;
 import openfl.display.FPS;
 import spriter.definitions.ScmlObject;
@@ -17,7 +19,10 @@ import spriter.library.SpriterLibrary;
 import spriter.library.TilelayerLibrary;
 
 /**
- * ...
+ * To test : 
+ * Press INSERT key to add an entity
+ * Press A key to change animation
+ * Press SPACE key to change character mapping
  * @author Loudo
  */
 
@@ -30,6 +35,13 @@ class Main extends Sprite
 	public var engine:SpriterEngine;
 	public var scml:ScmlObject;
 	
+	public var len:Int = 1;//number of spriter entity
+	
+	public var currentAnim:Int = 0;
+	public var currentCharMap:Int = -1;
+	public var anims:Array<String> = ['normal', 'instant', 'bone'];//TODO get automatically
+	public var charMaps:Array<String> = ['gold', 'circle']; //TODO get automatically
+	
 	function resize(e) 
 	{
 		if (!inited) init();
@@ -41,12 +53,9 @@ class Main extends Sprite
 		if (inited) return;
 		inited = true;
 		
-		var len:Int = 1;
 		
 		var fps:FPS = new FPS();
 		addChild(fps);
-		
-		
 		
 		/*
 		 * BLOCK 1 : Simple bitmap library
@@ -54,12 +63,12 @@ class Main extends Sprite
 		/*
 		var spriterRoot:Sprite = new Sprite();
 		
-		var lib:SpriterLibrary = new SpriterLibrary('assets/spriter/');
+		var lib:SpriterLibrary = new SpriterLibrary('assets/ugly/');
 		
-		engine = new SpriterEngine(Assets.getText('assets/spriter/player_map.scml'), lib, spriterRoot );
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
 
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1), 100  + 50 * (i % 10), 300+  50 * (Std.int(i / 10) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 10),  100 * (Std.int(i / 10) % 6));
 		}
 		*/
 		/*
@@ -68,33 +77,33 @@ class Main extends Sprite
 		/*
 		 * BLOCK 2 : tilelayer library
 		 */
-		/*
+		
 		var spriterRoot:Sprite = new Sprite();
 		
-		var lib:TilelayerLibrary = new TilelayerLibrary('assets/briton/briton.xml' , 'assets/briton/briton.png');
-		engine = new SpriterEngine(Assets.getText('assets/briton/briton.scml'), lib, spriterRoot );
+		var lib:TilelayerLibrary = new TilelayerLibrary('assets/ugly/ugly.xml' , 'assets/ugly/ugly.png');
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1), 0  + 50 * (i % 10),  50 * (Std.int(i / 10) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 10),  100 * (Std.int(i / 10) % 6));
 		}
-		*/
+		
 		/*
 		 * END BLOCK 2
 		 */
 		/*
 		 * BLOCK 3 : use BitmapLibrary
 		 */
-		
+		/*
 		var canvas:BitmapData = new BitmapData(800, 480);
 		var spriterRoot:Bitmap = new Bitmap(canvas, PixelSnapping.AUTO, true);
 		
-		var lib:BitmapLibrary = new BitmapLibrary('assets/spriter/', canvas);
+		var lib:BitmapLibrary = new BitmapLibrary('assets/ugly/', canvas);
 		
-		engine = new SpriterEngine(Assets.getText('assets/spriter/player.scml'), lib, null );
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, null );
 		
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1), 100 + 50 * (i % 10), 300 + 50 * (Std.int(i / 10) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 10),  100 * (Std.int(i / 10) % 6));
 		}
-		
+		*/
 		/*
 		 * END BLOCK 3
 		 */
@@ -102,24 +111,38 @@ class Main extends Sprite
 		
 		addChild(spriterRoot);
 		addEventListener(Event.ENTER_FRAME, onEnterFrame);
-		addEventListener(MouseEvent.CLICK, onClick);
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 		
 	}
-	private function onClick(e:MouseEvent):Void
+	private function onKey(e:KeyboardEvent):Void
 	{
-		
-		/*
-		 * Change animation by name :
-		 */
-		//engine.getEntity(0).playAnim('walk');
-		/*
-		 * Apply character map by name :
-		 */
-		engine.getEntity(0).applyCharacterMap('weapons', true);
-		/*
-		 * Add new entity
-		 */
-		//engine.addEntity('lib_00', -10,  75, 6);
+		switch(e.keyCode) {
+			case Keyboard.SPACE:
+				/*
+				 * Apply character map by name:
+				 */
+				if (currentCharMap + 1 < charMaps.length) {
+					engine.getEntity(0).applyCharacterMap(charMaps[++currentCharMap], false);
+				}else {
+					//TODO reinit
+				}
+			case Keyboard.A:
+				/*
+				 * Change animation by name :
+				 */
+				if (currentAnim + 1 < anims.length) {
+					engine.getEntity(0).playAnim(anims[++currentAnim]);
+				}else {
+					currentAnim = 0;
+					engine.getEntity(0).playAnim(anims[currentAnim]);
+				}
+			case Keyboard.INSERT:
+				len++;
+				/*
+				 * Add new entity
+				 */
+				engine.addEntity('lib_'+len,  100 * ((len-1) % 10),   100 * (Std.int((len-1) / 10) % 6));
+		}
 	}
 	
 	private function onEnterFrame(e:Event):Void

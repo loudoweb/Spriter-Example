@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:5b43b2122f3c27b73528274415316654:21fc1cc5d42cf3918810e1d48a700199:1b9991e5230ddcd313f1695b12856023$ -->
+<TextureAtlas imagePath="ugly.png">
+    <SubTexture name="black/circle/circle.png" x="116" y="2" width="114" height="114" frameX="-36" frameY="-36" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/cross/cross.png" x="2" y="158" width="112" height="154" frameX="-38" frameY="-12" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/square/square.png" x="118" y="232" width="112" height="112" frameX="-38" frameY="-36" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/square/square_02.png" x="230" y="346" width="110" height="110" frameX="-39" frameY="-37" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/square/square_03.png" x="118" y="346" width="110" height="110" frameX="-39" frameY="-37" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/square/square_04.png" x="230" y="118" width="112" height="110" frameX="-37" frameY="-36" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="black/square/square_05.png" x="232" y="2" width="110" height="110" frameX="-38" frameY="-36" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="gold/circle/circle.png" x="2" y="314" width="114" height="114" frameX="-36" frameY="-36" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="gold/cross/cross.png" x="2" y="2" width="112" height="154" frameX="-38" frameY="-12" frameWidth="190" frameHeight="182"/>
+    <SubTexture name="gold/square/square.png" x="116" y="118" width="112" height="112" frameX="-38" frameY="-36" frameWidth="190" frameHeight="182"/>
+</TextureAtlas>

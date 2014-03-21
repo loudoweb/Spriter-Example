@@ -6,7 +6,9 @@
 .project
 .metadata
 bin/
-assets/
+assets/brawler
+assets/briton
+assets/spriter
 tmp/
 *.tmp
 *.bak
