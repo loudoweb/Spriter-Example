@@ -122,7 +122,7 @@ class Main extends Sprite
 				 * Apply character map by name:
 				 */
 				if (currentCharMap + 1 < charMaps.length) {
-					engine.getEntity(0).applyCharacterMap(charMaps[++currentCharMap], false);
+					engine.getEntity('lib_1').applyCharacterMap(charMaps[++currentCharMap], false);
 				}else {
 					//TODO reinit
 				}
@@ -131,17 +131,27 @@ class Main extends Sprite
 				 * Change animation by name :
 				 */
 				if (currentAnim + 1 < anims.length) {
-					engine.getEntity(0).playAnim(anims[++currentAnim]);
+					engine.getEntityAt(0).playAnim(anims[++currentAnim]);
 				}else {
 					currentAnim = 0;
-					engine.getEntity(0).playAnim(anims[currentAnim]);
+					engine.getEntityAt(0).playAnim(anims[currentAnim]);
 				}
 			case Keyboard.INSERT:
 				len++;
 				/*
 				 * Add new entity
 				 */
-				engine.addEntity('lib_'+len,  100 * ((len-1) % 10),   100 * (Std.int((len-1) / 10) % 6));
+				engine.addEntity('lib_' + len,  100 * ((len - 1) % 10),   100 * (Std.int((len - 1) / 10) % 6));
+			case Keyboard.DELETE:
+				/*
+				 * Remove new entity
+				 */
+				engine.removeEntityAt(0);
+			case Keyboard.S:
+				/*
+				 *Swap child
+				 */
+				engine.swapAt(0, 1);
 		}
 	}
 	
