@@ -141,8 +141,8 @@
                 <key id="3" time="600">
                     <object folder="0" file="0" x="96" y="-91" angle="270"/>
                 </key>
-                <key id="4" time="800">
-                    <object folder="0" file="0" x="96" y="-91"/>
+                <key id="4" time="800" spin="0">
+                    <object folder="0" file="0" x="96" y="-91" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="cross">
@@ -222,6 +222,44 @@
                 </key>
                 <key id="4" time="800" spin="0">
                     <bone x="92" y="-94" angle="359.728458"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="alpha" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="1000">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="circle">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="96" y="-92" angle="0"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="2" file="0" x="96" y="-92" angle="0" a="0"/>
+                </key>
+                <key id="2" time="1000" spin="0">
+                    <object folder="2" file="0" x="96" y="-92" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="circle_000">
+                <key id="0" spin="0">
+                    <object folder="5" file="0" x="97" y="-92" angle="0" scale_x="0.471204" scale_y="0.469945"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="5" file="0" x="97" y="-92" angle="0" scale_x="0.471204" scale_y="0.469945" a="0"/>
+                </key>
+                <key id="2" time="1000" spin="0">
+                    <object folder="5" file="0" x="97" y="-92" angle="0" scale_x="0.471204" scale_y="0.469945"/>
                 </key>
             </timeline>
         </animation>

@@ -24,15 +24,17 @@ engine = new SpriterEngine(Assets.getText('assets/test.scml'), lib, null );
 //to add and entity
 engine.addEntity('entityName', x,  y);
 
-//set the "run" animation of the entity at z-order 0
-engine.getEntity(0).playAnim('run');
+//set the "run" animation of the entity
+engine.getEntity('entityName').playAnim('run', myCallback);
 
-//apply the "gun" map of the entity at z-order 0
-engine.getEntity(0).applyCharacterMap('gun', true);
-
+//apply the "gun" map of the entity
+engine.getEntity('entityName').applyCharacterMap('gun', true);
 
 //update on enter frame
 engine.update();
+
+//callback on end anim
+function myCallback(s:Spriter, anim:String):Void{}
 ```
 
 **Demo Assets**
