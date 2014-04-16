@@ -117,14 +117,14 @@ class Main extends Sprite
 	private function onKey(e:KeyboardEvent):Void
 	{
 		switch(e.keyCode) {
-			case Keyboard.SPACE:
+			case Keyboard.M:
 				/*
 				 * Apply character map by name:
 				 */
 				if (currentCharMap + 1 < charMaps.length) {
 					engine.getEntity('lib_1').applyCharacterMap(charMaps[++currentCharMap], false);
 				}else {
-					//TODO reinit
+					engine.getEntity('lib_1').applyCharacterMap('', true);
 				}
 			case Keyboard.A:
 				/*
@@ -152,12 +152,48 @@ class Main extends Sprite
 				 *Swap child
 				 */
 				engine.swapAt(0, 1);
+			case Keyboard.C:
+				/*
+				 * Change animation with callback :
+				 */
+				engine.getEntityAt(0).playAnim(anims[0], handleNextAnim);
+			case Keyboard.SPACE:
+				/*
+				 * Pause/Unpause Engine
+				 */
+				if (engine.paused) {
+					onFocus(null);
+				}else {
+					onFocusLost(null);
+				}
 		}
+	}
+	
+	private function handleNextAnim(s:Spriter, anim:String):Void
+	{
+		if (currentAnim + 1 >= anims.length)
+			currentAnim = -1;
+		engine.getEntityAt(0).playAnim(anims[++currentAnim]);
 	}
 	
 	private function onEnterFrame(e:Event):Void
 	{
 		engine.update();
+	}
+	
+	private function onFocusLost(e:Event):Void
+	{
+		if(!engine.paused){
+			stage.frameRate = 10;
+			engine.pause();
+		}
+	}
+	private function onFocus(e:Event):Void
+	{
+		if(engine.paused){
+			stage.frameRate = engine.framerate;
+			engine.unpause();
+		}
 	}
 
 	/* SETUP */
