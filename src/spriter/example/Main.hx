@@ -193,7 +193,7 @@ class Main extends Sprite
 		spriterRoot.y = 30;
 		var lib:SpriterLibrary = new SpriterLibrary('assets/ugly/');
 		
-		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly_b6_1.scml'), lib, spriterRoot );
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
 
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
@@ -213,7 +213,7 @@ class Main extends Sprite
 		var spriterRoot:Sprite = new Sprite();
 		spriterRoot.y = 30;
 		var lib:TilelayerLibrary = new TilelayerLibrary('assets/ugly/ugly.xml' , 'assets/ugly/ugly.png');
-		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly_b6_1.scml'), lib, spriterRoot );
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
 		
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
@@ -235,7 +235,7 @@ class Main extends Sprite
 		spriterRoot.y = 30;
 		var lib:BitmapLibrary = new BitmapLibrary('assets/ugly/', canvas);
 		
-		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly_b6_1.scml'), lib, null );
+		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, null );
 		
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
