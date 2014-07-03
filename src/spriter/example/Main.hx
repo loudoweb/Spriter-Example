@@ -45,8 +45,10 @@ class Main extends Sprite
 	
 	var currentAnim:Int = 0;
 	var currentCharMap:Int = -1;
-	var anims:Array<String> = ['instant','bone','normal','alpha'];//TODO get automatically
-	var charMaps:Array<String> = ['gold', 'circle']; //TODO get automatically
+	
+	var entities:Array<String>;
+	var anims:Array<String>;
+	var charMaps:Array<String>;
 	
 	function resize(e) 
 	{
@@ -95,6 +97,7 @@ class Main extends Sprite
 				if (currentCharMap + 1 < charMaps.length) {
 					engine.getEntity('lib_1').applyCharacterMap(charMaps[++currentCharMap], false);
 				}else {
+					currentCharMap = -1;
 					engine.getEntity('lib_1').applyCharacterMap('', true);
 				}
 			case Keyboard.A:
@@ -194,6 +197,9 @@ class Main extends Sprite
 		var lib:SpriterLibrary = new SpriterLibrary('assets/ugly/');
 		
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
+		entities =  engine.scml.getEntitiesName();
+		anims = engine.scml.getAnimationsName(entities[0]);
+		charMaps = engine.scml.getCharMaps(entities[0]);
 
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
@@ -214,6 +220,9 @@ class Main extends Sprite
 		spriterRoot.y = 30;
 		var lib:TilelayerLibrary = new TilelayerLibrary('assets/ugly/ugly.xml' , 'assets/ugly/ugly.png');
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
+		entities =  engine.scml.getEntitiesName();
+		anims = engine.scml.getAnimationsName(entities[0]);
+		charMaps = engine.scml.getCharMaps(entities[0]);
 		
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
@@ -236,6 +245,9 @@ class Main extends Sprite
 		var lib:BitmapLibrary = new BitmapLibrary('assets/ugly/', canvas);
 		
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, null );
+		entities =  engine.scml.getEntitiesName();
+		anims = engine.scml.getAnimationsName(entities[0]);
+		charMaps = engine.scml.getCharMaps(entities[0]);
 		
 		for (i in 0...len) {
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
