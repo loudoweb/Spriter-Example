@@ -13,13 +13,16 @@ import flash.text.TextField;
 import flash.ui.Keyboard;
 import openfl.Assets;
 import openfl.display.FPS;
+import spriter.definitions.Quadrilateral;
 import spriter.definitions.ScmlObject;
+import spriter.definitions.SpatialInfo;
 import spriter.engine.Spriter;
 import spriter.engine.SpriterEngine;
 import spriter.library.BitmapLibrary;
 import spriter.library.SpriterLibrary;
 import spriter.library.TilelayerLibrary;
 import spriter.macros.SpriterMacros;
+import spriter.vars.Variable;
 
 /**
  * To test : 
@@ -28,6 +31,9 @@ import spriter.macros.SpriterMacros;
  * Press M key to change character mapping
  * Press DEL key to remove
  * Press SPACE to pause
+ * Press Z to play an animation stack
+ * Press S to swap index of 2 spriters
+ * Press P to change playback speed
  * @author Loudo
  */
 
@@ -42,6 +48,7 @@ class Main extends Sprite
 	
 	var len:Int = 1;//number of spriter entity
 	var line:Sprite;
+	var boxAndPoints:Sprite;
 	
 	var currentAnim:Int = 0;
 	var currentCharMap:Int = -1;
@@ -71,7 +78,12 @@ class Main extends Sprite
 		
 		addControls();
 		
+		
+		boxAndPoints = new Sprite();
+		
+		
 		createTilelayer(null);
+		
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 		stage.addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -145,6 +157,11 @@ class Main extends Sprite
 				}else {
 					onFocusLost(null);
 				}
+			case Keyboard.P:
+				/*
+				 * Change playbackspeed :
+				 */
+				engine.getEntityAt(0).playbackSpeed = 2;
 		}
 	}
 	
@@ -164,6 +181,27 @@ class Main extends Sprite
 	private function onEnterFrame(e:Event):Void
 	{
 		engine.update();
+		
+		var points:Array<SpatialInfo> = engine.getEntityAt(0).getPoints();
+		var boxes:Array<Quadrilateral> = engine.getEntityAt(0).getBoxes();
+		boxAndPoints.graphics.clear();
+		for (box in boxes)
+		{
+			boxAndPoints.graphics.beginFill(0x00ff00);
+			boxAndPoints.graphics.moveTo(box.p1.x, box.p1.y+30);//+30 here because of spriterRoot position
+			boxAndPoints.graphics.lineTo(box.p2.x, box.p2.y+30);
+			boxAndPoints.graphics.lineTo(box.p3.x, box.p3.y+30);
+			boxAndPoints.graphics.lineTo(box.p4.x, box.p4.y+30);
+			boxAndPoints.graphics.lineTo(box.p1.x, box.p1.y+30);
+			boxAndPoints.graphics.endFill();
+		}
+		for (point in points)
+		{
+			
+			boxAndPoints.graphics.beginFill(0xff0000);
+			boxAndPoints.graphics.drawCircle(point.x,point.y+30, 4);
+			boxAndPoints.graphics.endFill();
+		}
 	}
 	private function onFocusLost(e:Event):Void
 	{
@@ -205,6 +243,10 @@ class Main extends Sprite
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
+		addChild(boxAndPoints);
+		
+		engine.getEntityAt(0).scml.tagCallback = tagCallback;
+		engine.getEntityAt(0).scml.varChangeCallback = varCallback;
 	}
 	function createTilelayer(e:MouseEvent):Void
 	{
@@ -228,6 +270,10 @@ class Main extends Sprite
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
+		addChild(boxAndPoints);
+		
+		engine.getEntityAt(0).scml.tagCallback = tagCallback;
+		engine.getEntityAt(0).scml.varChangeCallback = varCallback;
 	}
 	function createCopypixels(e:MouseEvent):Void
 	{
@@ -253,6 +299,26 @@ class Main extends Sprite
 			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
+		addChild(boxAndPoints);
+		
+		engine.getEntityAt(0).scml.tagCallback = tagCallback;
+		engine.getEntityAt(0).scml.varChangeCallback = varCallback;
+	}
+	/**
+	 * Each time a tag is dispatched
+	 * @param	tag name
+	 */
+	public function tagCallback(tag:String):Void
+	{
+		trace("tag",tag);
+	}
+	/**
+	 * Each time a variable value changes.
+	 * @param	variable
+	 */
+	public function varCallback(variable:Variable<Dynamic>):Void
+	{
+		trace("var", variable.toString());
 	}
 	
 	function addControls():Void

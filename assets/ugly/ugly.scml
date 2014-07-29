@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b7">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b8">
     <folder id="0" name="black/square">
         <file id="0" name="black/square/square.png" width="190" height="182" pivot_x="0.5" pivot_y="0.5"/>
         <file id="1" name="black/square/square_02.png" width="190" height="182" pivot_x="0.5" pivot_y="0.5"/>
@@ -22,8 +22,13 @@
     <folder id="5" name="gold/circle">
         <file id="0" name="gold/circle/circle.png" width="190" height="182" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <tag_list>
+        <i id="0" name="middleTime"/>
+    </tag_list>
     <entity id="0" name="ugly">
         <obj_info name="bone_000" type="bone" w="211.002" h="10"/>
+        <obj_info name="box_000" type="box" w="110" h="109" pivot_x="0" pivot_y="0"/>
+        <obj_info name="box_001" type="box" w="80" h="80" pivot_x="0" pivot_y="0"/>
         <character_map id="0" name="gold">
             <map folder="0" file="0" target_folder="3" target_file="0"/>
             <map folder="1" file="0" target_folder="4" target_file="0"/>
@@ -33,10 +38,14 @@
             <map folder="0" file="0" target_folder="2" target_file="0"/>
             <map folder="3" file="0" target_folder="5" target_file="0"/>
         </character_map>
+        <var_defs>
+            <i id="0" name="timeLabel" type="string" default="begin"/>
+        </var_defs>
         <animation id="0" name="instant" length="1500">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
                 </key>
                 <key id="1" time="150">
                     <object_ref id="0" timeline="0" key="1" z_index="0"/>
@@ -52,12 +61,16 @@
                 </key>
                 <key id="5" time="750">
                     <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
                 </key>
                 <key id="6" time="900">
                     <object_ref id="0" timeline="0" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
                 </key>
                 <key id="7" time="1050">
                     <object_ref id="0" timeline="0" key="7" z_index="0"/>
+                    <object_ref id="1" timeline="5" key="0" z_index="1"/>
                 </key>
                 <key id="8" time="1200">
                     <object_ref id="0" timeline="0" key="8" z_index="0"/>
@@ -104,6 +117,42 @@
                     <object folder="0" file="0" x="96" y="-91" angle="0"/>
                 </key>
             </timeline>
+            <timeline id="1" obj="1" name="box_000" object_type="box">
+                <key id="0" spin="0">
+                    <object x="40" y="-37" pivot_x="0" pivot_y="1" scale_x="1" scale_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="box_001" object_type="box">
+                <key id="0" time="750" spin="0">
+                    <object x="55" y="-53" pivot_x="0" pivot_y="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="point_000" object_type="point">
+                <key id="0" time="750" spin="0">
+                    <object x="95" y="-92" angle="84.559668"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="point_001" object_type="point">
+                <key id="0" time="900" spin="0">
+                    <object x="93" y="-39" angle="82.874984"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="point_002" object_type="point">
+                <key id="0" time="1050" spin="0">
+                    <object x="94" y="-4" angle="79.114473"/>
+                </key>
+            </timeline>
+            <meta>
+                <varline id="0" def="0">
+                    <key id="0" time="0" val="begin"/>
+                    <key id="1" time="750" val="middle"/>
+                </varline>
+                <tagline>
+                    <key id="0" time="750">
+                        <tag id="0" t="0"/>
+                    </key>
+                </tagline>
+            </meta>
         </animation>
         <animation id="1" name="normal" length="800">
             <mainline>
