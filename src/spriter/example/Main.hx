@@ -132,7 +132,7 @@ class Main extends Sprite
 				/*
 				 * Add new entity
 				 */
-				engine.addEntity('lib_' + len,  100 * ((len - 1) % 8),   100 * (Std.int((len - 1) / 8) % 6));
+				engine.addEntity('lib_' + len,  110 * ((len - 1) % 8),   100 * (Std.int((len - 1) / 8) % 6));
 			case Keyboard.DELETE:
 				/*
 				 * Remove entity
@@ -240,7 +240,7 @@ class Main extends Sprite
 		charMaps = engine.scml.getCharMaps(entities[0]);
 
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
 		addChild(boxAndPoints);
@@ -267,7 +267,7 @@ class Main extends Sprite
 		charMaps = engine.scml.getCharMaps(entities[0]);
 		
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
 		addChild(boxAndPoints);
@@ -296,7 +296,7 @@ class Main extends Sprite
 		charMaps = engine.scml.getCharMaps(entities[0]);
 		
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1),  75 * (i % 8),  100 * (Std.int(i / 8) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6));
 		}
 		addChild(spriterRoot);
 		addChild(boxAndPoints);
