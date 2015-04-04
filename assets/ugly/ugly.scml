@@ -258,30 +258,52 @@
                     <bone_ref id="0" timeline="2" key="0"/>
                     <object_ref id="0" parent="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" parent="0" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="3" key="0" z_index="2"/>
                 </key>
                 <key id="1" time="200">
                     <bone_ref id="0" timeline="2" key="1"/>
-                    <object_ref id="0" parent="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" parent="0" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="0" parent="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" parent="0" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="3" key="1" z_index="2"/>
                 </key>
                 <key id="2" time="400">
                     <bone_ref id="0" timeline="2" key="2"/>
-                    <object_ref id="0" parent="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" parent="0" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="0" parent="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" parent="0" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="3" key="2" z_index="2"/>
                 </key>
                 <key id="3" time="600">
                     <bone_ref id="0" timeline="2" key="3"/>
-                    <object_ref id="0" parent="0" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" parent="0" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="0" parent="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" parent="0" timeline="1" key="3" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="3" key="3" z_index="2"/>
                 </key>
             </mainline>
             <timeline id="0" name="square_001">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="3.990477" y="2.018935" angle="0.271542"/>
                 </key>
+                <key id="1" time="200" spin="0">
+                    <object folder="0" file="0" x="3.990477" y="2.018935" angle="0.271542"/>
+                </key>
+                <key id="2" time="400" spin="0">
+                    <object folder="0" file="0" x="3.990477" y="2.018935" angle="0.271542"/>
+                </key>
+                <key id="3" time="600" spin="0">
+                    <object folder="0" file="0" x="3.990477" y="2.018935" angle="0.271542"/>
+                </key>
             </timeline>
             <timeline id="1" name="cross_000">
                 <key id="0" spin="0">
+                    <object folder="1" file="0" x="160.988713" y="2.763002" angle="90.271542"/>
+                </key>
+                <key id="1" time="200" spin="0">
+                    <object folder="1" file="0" x="160.988713" y="2.763002" angle="90.271542"/>
+                </key>
+                <key id="2" time="400" spin="0">
+                    <object folder="1" file="0" x="160.988713" y="2.763002" angle="90.271542"/>
+                </key>
+                <key id="3" time="600" spin="0">
                     <object folder="1" file="0" x="160.988713" y="2.763002" angle="90.271542"/>
                 </key>
             </timeline>
@@ -297,6 +319,20 @@
                 </key>
                 <key id="3" time="600">
                     <bone x="92" y="-94" angle="270"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="ugly" object_type="entity">
+                <key id="0" spin="0">
+                    <object entity="0" animation="4" t="0" x="180.002718" y="-0.146918" angle="0.271542"/>
+                </key>
+                <key id="1" time="200" spin="0">
+                    <object entity="0" animation="4" t="0.25" x="180.002718" y="-0.146918" angle="0.271542"/>
+                </key>
+                <key id="2" time="400" spin="0">
+                    <object entity="0" animation="4" t="0.5" x="180.002718" y="-0.146918" angle="0.271542"/>
+                </key>
+                <key id="3" time="600" spin="0">
+                    <object entity="0" animation="4" t="0.75" x="180.002718" y="-0.146918" angle="0.271542"/>
                 </key>
             </timeline>
         </animation>

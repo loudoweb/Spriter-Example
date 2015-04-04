@@ -235,12 +235,12 @@ class Main extends Sprite
 		var lib:SpriterLibrary = new SpriterLibrary('assets/ugly/');
 		
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
-		entities =  engine.scml.getEntitiesName();
+		entities =  engine.scml.entitiesName;
 		anims = engine.scml.getAnimationsName(entities[0]);
 		charMaps = engine.scml.getCharMaps(entities[0]);
 
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6)).playAnim(charMaps[0]);
 		}
 		addChild(spriterRoot);
 		addChild(boxAndPoints);
@@ -262,12 +262,12 @@ class Main extends Sprite
 		spriterRoot.y = 30;
 		var lib:TilelayerLibrary = new TilelayerLibrary('assets/ugly/ugly.xml' , 'assets/ugly/ugly.png');
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, spriterRoot );
-		entities =  engine.scml.getEntitiesName();
+		entities =  engine.scml.entitiesName;
 		anims = engine.scml.getAnimationsName(entities[0]);
 		charMaps = engine.scml.getCharMaps(entities[0]);
 		
 		for (i in 0...len) {
-			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6));
+			engine.addEntity('lib_' + Std.int(i+1),  110 * (i % 8),  100 * (Std.int(i / 8) % 6)).playAnim(charMaps[0]);
 		}
 		addChild(spriterRoot);
 		addChild(boxAndPoints);
@@ -291,7 +291,7 @@ class Main extends Sprite
 		var lib:BitmapLibrary = new BitmapLibrary('assets/ugly/', canvas);
 		
 		engine = new SpriterEngine(Assets.getText('assets/ugly/ugly.scml'), lib, null );
-		entities =  engine.scml.getEntitiesName();
+		entities =  engine.scml.entitiesName;
 		anims = engine.scml.getAnimationsName(entities[0]);
 		charMaps = engine.scml.getCharMaps(entities[0]);
 		
